@@ -13,7 +13,7 @@ router.get("/sign-up", async (req, res) => {
   const { email, password } = req.body;
 
   const account = await Account.findOne({ where: { email } });
-  if (account) return res.json("Account already exists");
+  if (account) return res.jsonBadRequest(null, "Account already exists");
 
   const hash = bcrypt.hashSync(password, saltRounds);
   console.log(hash);
@@ -22,7 +22,7 @@ router.get("/sign-up", async (req, res) => {
     password: hash,
   });
 
-  return res.json(newAccount);
+  return res.jsonOK(newAccount);
 });
 
 module.exports = router;
