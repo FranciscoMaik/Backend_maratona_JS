@@ -23,6 +23,7 @@ router.get("/:id", async (req, res) => {
 router.post("/", async (req, res) => {
   const { accountId, body } = req;
   const { label, url, isSocial } = body;
+  console.log("*** link.post.accountId");
 
   const image = "https://www.google.com/image.jpeg";
 
